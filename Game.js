@@ -10,7 +10,7 @@ function Game()
 	initialiseCanvas();
 
 
-	this.direction = 0;
+	this.direction;
 	this.check = false;
 
 	// 1 = up "keycode = 87"
@@ -18,21 +18,27 @@ function Game()
 	// 3 = left "keycode = 65"
 	// 4 = right "keycode = 68"
 }
+
+//this funjction takes the fun out of the game
 Game.prototype.keyInputUp = function(e)
 {
-	this.direction = 0;
+	//this.direction = 0;
 }
 Game.prototype.keyInputDown = function(e)
 {
+	//i don't like the magic numbers for direction, perhaps use strings that tell me what direction each number is??
 	console.log(e.keycode);
 	if(e.keyCode == 87)
-		this.direction = 1;
+		this.direction = "Up";
 	else if(e.keyCode == 83)
-		this.direction = 2;
+		this.direction = "Down";
 	else if(e.keyCode == 65)
-		this.direction = 3;
+		this.direction = "Left";
 	else if(e.keyCode == 68)
-		this.direction = 4;
+		this.direction = "Right";
+	//having this here instead makes the game more challenging
+	else
+		this.direction = 0;
 }
 
 Game.prototype.gameLoop = function()
@@ -87,6 +93,7 @@ function DrawGameOver()
 	//Any idea what save and restore do?
 	ctx.restore();
 }
+//you have a lot of these, perhaps only have 1 and use it??
 function rgb(r, g, b) 
 { 
 	return 'rgb('+clamp(Math.round(r),0,255)+', '+clamp(Math.round(g),0,255)+', '+clamp(Math.round(b),0,255)+')';
