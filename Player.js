@@ -9,13 +9,14 @@ function Player()
 }
 Player.prototype.Update = function(e)
 {
-	if(e == 1)
+	//we were asked to have seperate methods for each directin...
+	if(e == "Up")
 		this.y -= this.speed;
-	else if( e == 2)
+	else if( e == "Down")
 		this.y += this.speed;
-	else if( e == 3)
+	else if( e == "Left")
 		this.x -= this.speed;
-	else if( e == 4)
+	else if( e == "Right")
 		this.x += this.speed;
 }
 
@@ -44,6 +45,7 @@ Player.prototype.Draw = function()
 	ctx.fillRect(this.x, this.y, 20, 20);
 }
 /*function for rgb for convenience*/
+//so many of these functions
 function rgb(r, g, b) 
 { 
 	return 'rgb('+clamp(Math.round(r),0,255)+', '+clamp(Math.round(g),0,255)+', '+clamp(Math.round(b),0,255)+')';
